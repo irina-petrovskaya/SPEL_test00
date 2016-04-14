@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="classpath:/configs/conf2.xml"/>
+    <bean id="b1" class="a.b.c.B1" p:num1="#{T(a.b.c.BB2).foo(12) * T(a.b.c.BB2).ZOO}"/>
+
+    <bean class="a.b.c.BB2" id="b2" p:lang="#{T(Math).PI}">
+           <description>#{a.b.c.B1(a.b.c.B3)}</description>
+        <property name="num2" value="#{T(a.b.c.B3).boo(T(a.b.c.BB2).foo(3))}"/>
+        <property name="inner" value="#{T(a.b.c.MyType1$InnerType1).EL1}"/>
+        <property name="inner2" value="#{T(a.b.c.MyType1$InnerType2).foo()}"/>
+   </bean>
+
+</beans>
